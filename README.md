@@ -23,22 +23,22 @@ $sudo raspi-config
         Memory split   - 16  ( runninge headless and we need all the memory we can get )
 ```    
 # Update Raspbian
-
+```
 $sudo aptt update
 $sudo aptt upgrade
-
+```
 # Install Postgresql
-
+```
 $sudo apt install postgresql  
-
+```
 # Create postgresql  user and database
+```
 $sudo su - postgres
 $createuser -d -P confluenceuser
     will prompt for password for the new db user
 
 $createdb -E utf8 -O confluenceuser confluence
-
-
+```
 ## Setup of  Confluence Server
 
 Experience with Jira on Raspberry pi is that it requires a lot of memory and also  swap.
@@ -46,9 +46,11 @@ Becuase of this I have decided to run Raspbian of hard drive insted of SD card.
 
 #Partition  hard drive
 Check if any partition on new disk is mounted 
+```
 $df
+```
 if there is listed any  /dev/sdaX  partition mounted , unmount them
-
+```
 $sudo parted /dev/sda
 (parted) mktable msdos
 Answer  Yes on warning that existing disk label on dev/sda will be destroyed
@@ -58,26 +60,35 @@ Make swap partition
 (parted) mkpart primary liux-swap 104M 2152M
 Make root partition
 (parted) mkpart primary ext4 2152M 100%
+```
 
 Create boot filesystem
+```
 $sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
-
+```
 Create root filesystem
+```
 $sudo mkfs.ext4 /dev/sd3
-
-# Copy  Raspbian from SD to HDD
+```
+## Copy  Raspbian from SD to HDD
+```
 $sudo mkdir /mnt/hdd
 $sudo mount /dev/sda3 /mnt/hdd
 ssudo mkdir /mnt/dd/boot
 $sudo mount /dev/sda1 /mnt/hdd/boot
 
 $sudo rsync -ax --progress / /boot  /mnt/hdd
+```
 
 # Change UUID of root partition
 Get PARTUUID  for root partition  on hdd
+```
 $sudo blkid /dev/sda3
+```
 This will give something like this :
+```
 /dev/sda3: UUID="904c10bb-1517-473d-97df-340557eae5a5" TYPE="ext4" PARTUUID="7bb35a07-03"
+```
 Here we need the PARTUUID
 Edit /mnt/hdd/boot/cmdline.txt  replace value of root=PARTUUID= with value for sda3
 For the example it will be root=PARTUUID=7bb35a07-03
