@@ -24,8 +24,8 @@ $sudo raspi-config
 ```    
 # Update Raspbian
 ```
-$sudo aptt update
-$sudo aptt upgrade
+$sudo apt update
+$sudo apt upgrade
 ```
 # Install Postgresql
 ```
