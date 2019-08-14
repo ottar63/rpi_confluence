@@ -9,7 +9,7 @@ I decideed to use external HD on the the Confluence server since
 I exppect it will need to use swap space.
 
 ## Setup of Database server
-
+'''
 $sudo raspi-config
     Change User Password
     Network Options 
@@ -21,7 +21,7 @@ $sudo raspi-config
         Enable SSH
     Advanced Options
         Memory split   - 16  ( runninge headless and we need all the memory we can get )
-    
+'''    
 # Update Raspbian
 
 $sudo aptt update
