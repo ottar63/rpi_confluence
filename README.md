@@ -97,10 +97,12 @@ Edit /mnt/hdd/etc/fstab
 Change PARTUUID for  /boot  and /  partiriton
 add entry for swap partition
 Here is example of /mnt/hdd/etc/fstab for example above:
+```
     proc            /proc           proc    defaults          0       0
     PARTUUID=7bb35a07-01  /boot           vfat    defaults          0       2
     PARTUUID=7bb35a07-03  /               ext4    defaults,noatime  0       1
     PARTUUID=7bb35a07-02  none            swap    sw          0       0
+```
 
 Shutdown, remove SD card and reboot.
 
