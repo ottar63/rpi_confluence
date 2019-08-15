@@ -44,7 +44,7 @@ $createdb -E utf8 -O confluenceuser confluence
 Experience with Jira on Raspberry pi is that it requires a lot of memory and also  swap.
 Becuase of this I have decided to run Raspbian of hard drive insted of SD card.
 
-#Partition  hard drive
+# Partition  hard drive
 Check if any partition on new disk is mounted 
 ```
 $df
@@ -122,7 +122,7 @@ Should show :
 Mem:         999036       34548      891524       12876       72964      902068
 Swap:       1999868           0     1999868
 
-#Install prerequisites
+# Install prerequisites
 
 Install  Oracle JDK
 $sudo apt install oracle-java8-jdk
