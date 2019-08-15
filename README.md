@@ -66,6 +66,7 @@ Make swap partition
 Make root partition
 ```
 (parted) mkpart primary ext4 2152M 100%
+(parted) quit
 ```
 
 Create boot filesystem
@@ -74,13 +75,13 @@ $sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
 ```
 Create root filesystem
 ```
-$sudo mkfs.ext4 /dev/sd3
+$sudo mkfs.ext4 /dev/sda3
 ```
 ## Copy  Raspbian from SD to HDD
 ```
 $sudo mkdir /mnt/hdd
 $sudo mount /dev/sda3 /mnt/hdd
-ssudo mkdir /mnt/dd/boot
+ssudo mkdir /mnt/hdd/boot
 $sudo mount /dev/sda1 /mnt/hdd/boot
 
 $sudo rsync -ax --progress / /boot  /mnt/hdd
