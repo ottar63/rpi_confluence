@@ -109,63 +109,88 @@ Disable  swap-file
 $sudo dphys-swapfile swapoff
 ```
 Remove  swap file
-    $sudo dphys-swapfile uninstall
+`  
+$sudo dphys-swapfile uninstall
+```
 Disable creating new swapfile on reboot
-    $sudo systemctl disable dphys-swapfile
-
+```
+$sudo systemctl disable dphys-swapfile
+```
 Use new swap partition
-    $sudo mkswap /dev/sda2
-    $sudo swapon /dev/sda2
-
+```
+$sudo mkswap /dev/sda2
+$sudo swapon /dev/sda2
+```
 Check that there is 2GB swap in use :
-    $fee
+```
+$fee
+```
 Should show :
+```
               total        used        free      shared  buff/cache   available
-    Mem:         999036       34548      891524       12876       72964      902068
-    Swap:       1999868           0     1999868
-
+Mem:         999036       34548      891524       12876       72964      902068
+Swap:       1999868           0     1999868
+```
 # Install prerequisites
 
 Install  Oracle JDK
-    $sudo apt install oracle-java8-jdk
+```
+$sudo apt install oracle-java8-jdk
+```
 
 Set JAVA_HOME 
 Find java home 
-    ls -l /etc/alternative/java
-    lrwxrwxrwx 1 root root 53 Jun 13 11:04 /etc/alternatives/java -> /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/bin/java
+```
+ls -l /etc/alternative/java
+lrwxrwxrwx 1 root root 53 Jun 13 11:04 /etc/alternatives/java -> /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/bin/java
+```
 Here Java home is /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre
 Edit /etc/bash.bashrc
 Add the following at the end of file:
-    export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre
+```
+export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre
+```
 
 
 
 Create user that should run confluence
-    $sudo adduser confluence 
+```
+$sudo adduser confluence 
+```
 
 Create install directory for confluence 
-    $sudo mkdir /opt/confluence
+```
+$sudo mkdir /opt/confluence
+```
 Create confluence home directory
-    $sudo mkdir /opt/confluence-home
+```
+$sudo mkdir /opt/confluence-home
+```
 
 download atlassian-confluence-6.15.4.tar.gz
 
 Copy  atlassian-confluence-6.15.4.tar.gz  /opt/confluence
 
 Change owner of /opt/confluence and /opt/confluence-home
-    $sudo chown -R confluence /opt/confluence /opt/confluence-home
+```
+$sudo chown -R confluence /opt/confluence /opt/confluence-home
+```
 
 Change to user confluence 
-    $sudo su - confluence
-
+```
+$sudo su - confluence
+```
 Setup confluence home directory
 edit /opt/confluence/atlassian-confluence-6.15.4/confluence/WEB-INF/classes/confluence-init.properties
 set 
-    confluence.home=/opt/confluence-home
-
+```
+confluence.home=/opt/confluence-home
+```
 
 Start Confluence
-    $/opt/confluence/atlassian-confluence-6.15.4/bin/start-confluence.sh
+```
+$/opt/confluence/atlassian-confluence-6.15.4/bin/start-confluence.sh
+```
 
 Access  Confluence configuration page 
 http://<ip of rpi-conflunece server>:8090
