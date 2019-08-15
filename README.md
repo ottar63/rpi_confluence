@@ -53,12 +53,18 @@ if there is listed any  /dev/sdaX  partition mounted , unmount them
 ```
 $sudo parted /dev/sda
 (parted) mktable msdos
+```
 Answer  Yes on warning that existing disk label on dev/sda will be destroyed
 Make boot partition ( to get the partition alligned on 8M boundary , I selected boot partition to end on 104MB )
+```
 (parted) mkpart primary fat32 0% 104M
+```
 Make swap partition 
+```
 (parted) mkpart primary liux-swap 104M 2152M
+```
 Make root partition
+```
 (parted) mkpart primary ext4 2152M 100%
 ```
 
