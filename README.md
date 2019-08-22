@@ -118,7 +118,7 @@ Disable  swap-file
 $sudo dphys-swapfile swapoff
 ```
 Remove  swap file
-`  
+```  
 $sudo dphys-swapfile uninstall
 ```
 Disable creating new swapfile on reboot
